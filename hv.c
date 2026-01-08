@@ -959,6 +959,15 @@ hv_return_t _hv_vm_config_set_isa(hv_vm_config_t config, uint32_t isa) {
   return 0;
 }
 
+hv_return_t _hv_vm_config_set_ipa_granule(hv_vm_config_t config, uint32_t granule) {
+  struct hv_vm_config_private *_config = (struct hv_vm_config_private *)config;
+  if (config == NULL) {
+    return HV_BAD_ARGUMENT;
+  }
+  _config->granule = granule;
+  return 0;
+}
+
 hv_return_t _hv_vcpu_get_actlr(hv_vcpu_t vcpu, uint64_t* value) {
   hv_return_t err;
   struct hv_vcpu_data* vcpu_data = &vcpus[vcpu];
