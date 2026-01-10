@@ -959,6 +959,24 @@ hv_return_t _hv_vm_config_set_isa(hv_vm_config_t config, uint32_t isa) {
   return 0;
 }
 
+hv_return_t _hv_vm_config_set_ipa_base(hv_vm_config_t config, uint64_t ipa_base) {
+  struct hv_vm_config_private *_config = (struct hv_vm_config_private *)config;
+  if (config == NULL) {
+    return HV_BAD_ARGUMENT;
+  }
+  _config->min_ipa = ipa_base;
+  return 0;
+}
+
+hv_return_t _hv_vm_config_set_ipa_size(hv_vm_config_t config, uint64_t ipa_size) {
+  struct hv_vm_config_private *_config = (struct hv_vm_config_private *)config;
+  if (config == NULL) {
+    return HV_BAD_ARGUMENT;
+  }
+  _config->ipa_size = ipa_size;
+  return 0;
+}
+
 hv_return_t _hv_vm_config_set_ipa_granule(hv_vm_config_t config, uint32_t granule) {
   struct hv_vm_config_private *_config = (struct hv_vm_config_private *)config;
   if (config == NULL) {
